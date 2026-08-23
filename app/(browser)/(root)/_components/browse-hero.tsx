@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 export const BrowseHero = () => {
   return (
     <section className="relative w-full border-b border-border/40 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 items-center min-h-[460px]">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 items-center min-h-115">
         
         {/* Chap qism: Matn va Tugmalar */}
         <div className="lg:col-span-6 xl:col-span-7 flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-6 z-10">
@@ -44,7 +44,7 @@ export const BrowseHero = () => {
         </div>
 
         {/* O'ng qism: Rasm + Gradient Mask */}
-        <div className="lg:col-span-6 xl:col-span-5 relative w-full h-[360px] lg:h-[460px]">
+        <div className="lg:col-span-6 xl:col-span-5 relative w-full h-90 lg:h-115">
           <Image
             src="/images/hero-banner.png"
             alt="Nexus Store to'plami"
@@ -54,7 +54,7 @@ export const BrowseHero = () => {
             priority
           />
           {/* Chap qirradagi to'rtburchak chiziqni oq fonga yumshatuvchi mask */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent hidden lg:block" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-background to-transparent hidden lg:block" />
         </div>
 
       </div>

@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { CATEGORIES_DATA } from '@/data/categories';
-import { Badge } from '@/components/ui/badge';
+import { CATEGORIES_DATA, type CategoryItem } from '../../../../data/categories';
 import { ArrowUpRight } from 'lucide-react';
 
 export const CategoryGrid = () => {
@@ -20,7 +19,7 @@ export const CategoryGrid = () => {
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
-      {CATEGORIES_DATA.map((cat) => {
+      {CATEGORIES_DATA.map((cat: CategoryItem) => {
         const isActive = activeCategory === cat.slug;
         return (
           <div

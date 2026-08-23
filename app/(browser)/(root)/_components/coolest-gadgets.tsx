@@ -19,7 +19,7 @@ export const CoolestGadgets = () => {
   return (
     <section className="w-full py-16 border-b border-border/40 bg-background relative overflow-hidden">
       {/* Orqa fondagi nozik tech grid effekti */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[24px_24px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -46,7 +46,7 @@ export const CoolestGadgets = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
           {/* 1. ASOSIY QAHRAMON MAHSULOT (Chap tomon - 7 ustun) */}
-          <div className="lg:col-span-7 rounded-3xl border border-border/70 bg-gradient-to-br from-card to-muted/30 p-6 sm:p-8 flex flex-col justify-between relative group overflow-hidden shadow-sm">
+          <div className="lg:col-span-7 rounded-3xl border border-border/70 bg-linear-to-br from-card to-muted/30 p-6 sm:p-8 flex flex-col justify-between relative group overflow-hidden shadow-sm">
             
             {/* Yuqori meta qism */}
             <div className="flex items-center justify-between z-10">
@@ -58,7 +58,7 @@ export const CoolestGadgets = () => {
             </div>
 
             {/* Markaziy interaktiv rasm maydoni */}
-            <div className="my-8 relative w-full aspect-[16/10] overflow-hidden rounded-2xl bg-muted/20">
+            <div className="my-8 relative w-full aspect-16/10 overflow-hidden rounded-2xl bg-muted/20">
               <Image
                 src={featured.image}
                 alt={featured.name}
@@ -67,7 +67,7 @@ export const CoolestGadgets = () => {
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-linear-to-t from-background/90 via-transparent to-transparent opacity-80" />
               
               {/* Rasm ustidagi narx va spec tegi */}
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">

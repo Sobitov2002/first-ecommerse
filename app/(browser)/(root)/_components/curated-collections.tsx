@@ -3,8 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Sparkles, Compass } from 'lucide-react';
-import { COLLECTIONS_DATA } from '@/data/collections';
+import { ArrowUpRight, Compass } from 'lucide-react';
+import { DETAILED_COLLECTIONS } from '@/data/collections';
 import { Badge } from '@/components/ui/badge';
 
 export const CuratedCollections = () => {
@@ -32,26 +32,26 @@ export const CuratedCollections = () => {
 
       {/* 2 ta Katta Editorial Kapsula Banneri */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {COLLECTIONS_DATA.map((col) => (
+          {DETAILED_COLLECTIONS.map((col) => (
           <Link
             key={col.id}
             href={`/browse/collections/${col.slug}`}
-            className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card p-6 sm:p-8 flex flex-col justify-between min-h-[360px] sm:min-h-[420px] transition-all duration-500 hover:border-foreground/30 hover:shadow-xl"
+            className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card p-6 sm:p-8 flex flex-col justify-between min-h-90 sm:min-h-105 transition-all duration-500 hover:border-foreground/30 hover:shadow-xl"
           >
             {/* Fon Rasmi + Qoramtir Gradient Overlay */}
             <Image
-              src={col.image}
+                 src={col.coverImage}
               alt={col.title}
               fill
               className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-90 transition-opacity group-hover:opacity-80" />
+            <div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-transparent opacity-90 transition-opacity group-hover:opacity-80" />
 
             {/* Yuqori Badge va Mahsulotlar Soni */}
             <div className="relative z-10 flex items-center justify-between">
               <Badge variant="outline" className="bg-background/80 backdrop-blur-md font-space text-[11px] px-3 py-1 border-border">
-                {col.tag}
+                   {col.edition}
               </Badge>
               <span className="font-mono text-xs text-muted-foreground bg-background/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-border/60">
                 {col.itemCount} ta tovar
@@ -65,7 +65,7 @@ export const CuratedCollections = () => {
                   {col.title}
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-muted-foreground mt-1 max-w-md line-clamp-2">
-                  {col.subtitle}
+                     {col.concept}
                 </p>
               </div>
 
@@ -74,7 +74,7 @@ export const CuratedCollections = () => {
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background transition-transform duration-300 group-hover:translate-x-1">
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </div>
-              </div>
+              </div>    
             </div>
           </Link>
         ))}

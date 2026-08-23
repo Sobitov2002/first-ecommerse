@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowseHero } from './_components/browse-hero';
 import { CategoryGrid } from './_components/category-grid';
 import { BestPrices } from './_components/best-prices';
@@ -14,7 +14,9 @@ export default function BrowsePage() {
           <h3 className="font-space text-lg font-bold tracking-tight mb-4 text-foreground">
             Kategoriyalar bo‘yicha ko‘rish
           </h3>
-          <CategoryGrid />
+          <Suspense fallback={<div className="h-32" />}>
+            <CategoryGrid />
+          </Suspense>
         </div>
         <BestPrices />
         <CoolestGadgets />

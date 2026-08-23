@@ -1,32 +1,64 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Search, ShoppingBag } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
+const NAV_LINKS = [
+  { name: 'Katalog', href: '/catalog' },
+  { name: 'Yangi kelganlar', href: '/shop' },
+  { name: "To'plamlar", href: '/tops' },
+];
+
 export const BrowseNavbar = () => {
+  const pathname = usePathname();
+
+
+  const checkIsActive = (href: string) => {
+    if (!pathname) return false;
+    
+    
+    if (href === '/catalog') {
+      return pathname === '/catalog' || pathname === '/catalog/';
+    }
+    
+    return pathname.startsWith(href);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         
-        {/* Logo */}
+        {/* Logo & Navigatsiya */}
         <div className="flex items-center gap-8">
-          <Link href="/" className="font-space text-xl font-bold tracking-tight text-foreground">
+          <Link href="/" className="font-space text-xl font-bold tracking-tight text-foreground transition hover:opacity-80">
             NEXUS<span className="text-muted-foreground font-light">.STORE</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 font-space text-sm font-medium text-muted-foreground">
-            <Link href="/browse" className="text-foreground transition-colors hover:text-foreground">
-              Katalog
-            </Link>
-            <Link href="/browse/new" className="transition-colors hover:text-foreground">
-              Yangi kelganlar
-            </Link>
-            <Link href="/browse/collections" className="transition-colors hover:text-foreground">
-              To'plamlar
-            </Link>
+          <nav className="hidden md:flex items-center gap-2 font-space text-sm font-medium">
+            {NAV_LINKS.map((link) => {
+              const isActive = checkIsActive(link.href);
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200',
+                    isActive
+                      ? 'bg-foreground text-background font-semibold shadow-sm'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
         </div>
 
@@ -41,12 +73,12 @@ export const BrowseNavbar = () => {
             />
           </div>
 
-          {/* Button o'rniga to'g'ridan-to'g'ri buttonVariants bilan Link */}
           <Link
             href="/cart"
             className={cn(
               buttonVariants({ variant: 'outline', size: 'sm' }),
-              'rounded-full font-space gap-2 h-9 px-4'
+              'rounded-full font-space gap-2 h-9 px-4',
+              pathname === '/cart' && 'bg-muted border-foreground/40'
             )}
           >
             <ShoppingBag className="h-4 w-4" />
